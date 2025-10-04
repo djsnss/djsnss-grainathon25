@@ -20,8 +20,9 @@ function createEmptyDeptList() {
     };
 }
 
-export async function getDeptDonations() {
+export async function getDeptDonations(day=1) {
     try {
+        const RANGE = `Day${day}!F:H`;
         console.log("Fetching data from Google Sheets...");
         const responseData = await getValues(SPREADSHEET_ID, RANGE);
         const rows = (responseData.values || []).slice(1); // skip header
