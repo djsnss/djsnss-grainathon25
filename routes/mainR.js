@@ -2,6 +2,7 @@ import express from "express";
 import { getDeptDonations } from "../controllers/daysC.js";
 import { getCommDonations } from "../controllers/committesC.js";
 import { getTotalDonations } from "../controllers/totalC.js";
+import { getTopCommDonation } from "../controllers/committesC.js";
 
 const router = express.Router();
 
@@ -38,6 +39,18 @@ router.get("/total", async (req, res) => {
         return res
             .status(500)
             .json({ message: "Failed to fetch total donations" });
+    }
+});
+
+router.get("/winning", async (req, res) => {
+    try {
+        const data = await getTopCommDonation();
+        return res.status(200).json(data);
+    } catch (err) {
+        console.error("Route error /winning:", err);
+        return res
+            .status(500)
+            .json({ message: "Failed to fetch top committee donation" });
     }
 });
 

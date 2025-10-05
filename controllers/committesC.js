@@ -33,3 +33,29 @@ export async function getCommDonations() {
         throw err;
     }
 }
+
+export async function getTopCommDonation() {
+    try {
+        // Get all aggregated donations
+        const commDonations = await getCommDonations();
+
+        if (commDonations.length === 0) {
+            return null; // no data
+        }
+
+        // Find the object with the highest quantity
+        let topDonation = commDonations[0];
+        for (const donation of commDonations) {
+            if (donation.quantity > topDonation.quantity) {
+                topDonation = donation;
+            }
+        }
+
+        console.log("Top committee donation:", topDonation);
+        return topDonation; // { dept, comm, quantity }
+    } catch (err) {
+        console.error("Error finding top committee donation:", err);
+        throw err;
+    }
+}
+
