@@ -11,8 +11,7 @@ export async function getTotalDonations() {
             EXTC: 0,
             ICB: 0,
             IT: 0,
-            MECH: 0,
-            Outsider: 0,
+            MECH: 0
         }
         const commDonations = await getCommDonations();
         for (const comm of commDonations) {
@@ -35,6 +34,28 @@ export async function getTotalDonations() {
         return deptDonations;
     } catch (err) {
         console.error("Error calculating total donations:", err);
+        throw err;
+    }
+}
+
+export async function getTopDepartment() {
+    try {
+        const totalDonations = await getTotalDonations();
+
+        let topDept = null;
+        let maxDonation = 0;    
+
+        for (const [dept, total] of Object.entries(totalDonations)) {
+            if (total > maxDonation) {
+                maxDonation = total;
+                topDept = dept;
+            }
+        }
+
+        console.log("Highest donating department:", { dept: topDept, total: maxDonation });
+        return { dept: topDept, total: maxDonation };
+    } catch (err) {
+        console.error("Error fetching top department:", err);
         throw err;
     }
 }

@@ -15,12 +15,11 @@ function createEmptyDeptList() {
         EXTC: 0,
         ICB: 0,
         IT: 0,
-        MECH: 0,
-        Outsider: 0,
+        MECH: 0
     };
 }
 
-export async function getDeptDonations(day=1) {
+export async function getDeptDonations(day = 1) {
     try {
         const RANGE = `Day${day}!F:H`;
         console.log("Fetching data from Google Sheets...");
@@ -31,10 +30,11 @@ export async function getDeptDonations(day=1) {
         rows.forEach((row) => {
             const dept = row[0];
             const quantity = parseFloat(row[2]) || 0;
-            if (dept in deptDonations) {
-                deptDonations[dept] += quantity;
-            } else {
-                deptDonations.Outsider += quantity;
+            const grainOrCloth = row[1];
+            if (grainOrCloth == "GRAIN") { // only count grain donations
+                if (dept in deptDonations) {
+                    deptDonations[dept] += quantity;
+                }
             }
         });
 
