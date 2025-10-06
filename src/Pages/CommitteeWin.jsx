@@ -18,16 +18,14 @@ const CommitteeWin = () => {
       const setupCurve = async () => {
         await document.fonts.ready;
         const circle = new CircleType(textRef.current);
-        circle.radius(800).dir(1);  
-        textRef.current.style.letterSpacing = "6px";
-        textRef.current.style.transformOrigin = "center";
+        circle.radius(800).dir(1);
       };
       setupCurve();
     }
   }, [winning]);
 
   return (
-    <div className="relative w-screen h-screen bg-[url('/assets/bg7.png')] bg-cover flex items-center justify-center overflow-hidden">
+    <div className="relative w-screen h-screen bg-[url('/assets/bg7.png')] bg-cover bg-center flex items-center justify-center overflow-hidden">
       <FireworksBackground />
       {/* Score box */}
       <div className="absolute top-6 right-8 flex flex-col items-center px-4 py-2 rounded text-center z-10">
@@ -43,7 +41,7 @@ const CommitteeWin = () => {
       <h1
         ref={textRef}
         id="curved2"
-        className="absolute top-36 w-full text-center font-arcade text-white text-9xl font-bold drop-shadow-lg select-none z-10"
+        className="absolute top-28 w-full text-center font-arcade text-white text-9xl font-bold drop-shadow-lg select-none z-10"
       >
         {winning ? `${winning.comm.toUpperCase()} WINS` : "Loading..."}
       </h1>
