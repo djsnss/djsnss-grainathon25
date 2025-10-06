@@ -19,6 +19,7 @@ const CommitteeWin = () => {
         await document.fonts.ready;
         const circle = new CircleType(textRef.current);
         circle.radius(800).dir(1);
+        textRef.current.style.letterSpacing = "6px";
       };
       setupCurve();
     }
@@ -41,7 +42,7 @@ const CommitteeWin = () => {
       <h1
         ref={textRef}
         id="curved2"
-        className="absolute top-28 w-full text-center font-arcade text-white text-9xl font-bold drop-shadow-lg select-none z-10"
+        className="absolute top-40 w-full text-center font-arcade text-white text-9xl font-bold drop-shadow-lg select-none z-10"
       >
         {winning ? `${winning.comm.toUpperCase()} WINS` : "Loading..."}
       </h1>

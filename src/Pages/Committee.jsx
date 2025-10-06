@@ -37,13 +37,13 @@ const Committee = () => {
 
       <Header />
 
-      <div className="w-full h-max flex flex-row items-center justify-center gap-10 text-4xl text-white font-up font-bold z-10 mt-5 tracking-wider">
+      <div className="w-full h-max flex flex-row items-center justify-center gap-10 text-4xl text-white font-up font-bold z-10 mt-20 tracking-wider">
         <h1>Committee</h1>
         <h1>Leaderboard</h1>
       </div>
 
       <div
-        className="z-10 w-[55%] h-[600px] overflow-y-auto gap-4 mt-6 flex flex-wrap justify-around items-center text-white"
+        className="z-10 w-[55%] h-[600px] overflow-y-auto gap-4 mt-6 flex flex-wrap justify-around items-start text-white"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {committees.map((item, index) => (
