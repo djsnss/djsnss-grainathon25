@@ -59,7 +59,7 @@ const Total = () => {
 
       <Header />
 
-      <div className="w-full h-max flex flex-row items-center justify-center gap-10 text-4xl text-white font-up font-bold z-10 mt-10 tracking-wider">
+      <div className="w-full h-max flex flex-row items-center justify-center gap-10 text-5xl text-white font-up font-bold z-20 mt-10 tracking-wider">
         <h1>Total</h1>
         <h1>Score</h1>
       </div>
@@ -71,12 +71,12 @@ const Total = () => {
             alt="Banner"
             className="w-full rounded-xl mb-4"
             style={{
-              maxHeight: "100px",
+              maxHeight: "150px",
               objectFit: "cover",
             }}
           />
 
-          <table className="w-full text-white text-lg font-bold text-center bg-white bg-opacity-10 rounded-xl font-silkscreen overflow-hidden">
+          <table className="w-full text-white text-xl font-bold text-center bg-white bg-opacity-10 rounded-xl font-silkscreen overflow-hidden">
             <thead>
               <tr>
                 <th className="py-1 px-2">Rank</th>

@@ -24,27 +24,52 @@ export const total = {
 export const comm = [
   {
     dept: "COMPS",
-    comm: "Unicode",
+    comm: "A",
     quantity: 150,
   },
   {
-    dept: "COMPS",
-    comm: "ACM",
+    dept: "IT",
+    comm: "A",
     quantity: 104,
   },
   {
-    dept: "AIDS",
-    comm: "S4DS",
+    dept: "CSEDS",
+    comm: "A",
     quantity: 10,
   },
   {
-    dept: "IT",
-    comm: "CSI",
+    dept: "ICB",
+    comm: "A",
     quantity: 15,
   },
  {
-    dept: "ICB",
-    comm: "Isaca",
+    dept: "EXTC",
+    comm: "A",
+    quantity: 30,
+  },
+ {
+    dept: "MECH",
+    comm: "A",
+    quantity: 30,
+  },
+ {
+    dept: "AIML",
+    comm: "A",
+    quantity: 30,
+  },
+ {
+    dept: "OTHER",
+    comm: "A",
+    quantity: 30,
+  },
+ {
+    dept: "AIDS",
+    comm: "A",
+    quantity: 30,
+  },
+ {
+    dept: "OTHER",
+    comm: "A",
     quantity: 30,
   },
 ];
