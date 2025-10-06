@@ -1,9 +1,32 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Header from "../Components/Header";
-import { comm } from "../data";
 import Card from "../Components/Card";
 
-const Committee = () => {     
+const Committee = () => {
+  const [committees, setCommittees] = useState([]);
+
+  useEffect(() => {
+    const fetchData = () => {
+      fetch('https://djsnss-grainathon25.onrender.com/grain-a-thon2025/comm')
+        .then(res => res.json())
+        .then(data => {
+          const arr = data.map(item => ({
+            comm: item.comm,      
+            quantity: item.quantity, 
+            dept: item.dept, 
+          }));
+          setCommittees(arr);
+        })
+        .catch(error => {
+          console.error('Error fetching leaderboard stats:', error);
+        });
+    };
+
+    fetchData();
+    const pollInterval = setInterval(fetchData, 7000);
+    return () => clearInterval(pollInterval);
+  }, []);
+
   return (
     <div className="flex flex-col justify-center items-center h-screen w-screen relative overflow-hidden">
       <img
@@ -23,7 +46,7 @@ const Committee = () => {
         className="z-10 w-[55%] h-[600px] overflow-y-auto gap-4 mt-6 flex flex-wrap justify-around items-center text-white"
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
-        {comm.map((item, index) => (
+        {committees.map((item, index) => (
           <Card key={index} item={item} />
         ))}
       </div>

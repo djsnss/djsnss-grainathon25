@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import Header from "../Components/Header";
-import { total as totalData } from "../data";
 import { motion, AnimatePresence } from "framer-motion";
 
 const colors = [
@@ -15,12 +14,6 @@ const colors = [
   "#ffca09",
 ];
 
-const initialArr = Object.entries(totalData).map(([name, score], i) => ({
-  name,
-  score,
-  color: colors[i % colors.length],
-}));
-
 function getSortedArr(arr) {
   return [...arr]
     .sort((a, b) =>
@@ -30,19 +23,30 @@ function getSortedArr(arr) {
 }
 
 const Total = () => {
-  const [teams, setTeams] = useState(getSortedArr(initialArr));
+  const [teams, setTeams] = useState([]);
 
-  // Update teams if totalData changes (simulate API update)
   useEffect(() => {
-    setTeams(getSortedArr(initialArr));
-  }, [totalData]);
+    const fetchData = () => {
+      fetch('https://djsnss-grainathon25.onrender.com/grain-a-thon2025/total')
+        .then(res => res.json())
+        .then(data => {
+          // Convert API data to array format
+          const arr = Object.entries(data).map(([name, score], i) => ({
+            name,
+            score,
+            color: colors[i % colors.length],
+          }));
+          setTeams(getSortedArr(arr));
+        })
+        .catch(error => {
+          console.error('Error fetching leaderboard stats:', error);
+        });
+    };
 
-  const handleScore = (name) => {
-    const updated = teams.map((team) =>
-      team.name === name ? { ...team, score: team.score + 1 } : team
-    );
-    setTeams(getSortedArr(updated));
-  };
+    fetchData();
+    const pollInterval = setInterval(fetchData, 7000);
+    return () => clearInterval(pollInterval);
+  }, []);
 
   const totalScore = teams.reduce((acc, curr) => acc + curr.score, 0);
 
