@@ -1,27 +1,30 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import CircleType from "circletype";
-import { winning } from "../data";
-import FireworksBackground from "../Components/FireworksBackground"; // <-- Import here
+import FireworksBackground from "../Components/FireworksBackground";
 
 const CommitteeWin = () => {
   const textRef = useRef(null);
+  const [winning, setWinning] = useState(null);
 
   useEffect(() => {
-    // Wait until fonts are loaded for consistent curvature
-    const setupCurve = async () => {
-      await document.fonts.ready;
-      const circle = new CircleType(textRef.current);
-
-      // Apply curve settings
-      circle.radius(800).dir(1); // dir(1) = upward, dir(-1) = downward
-
-      // Optional tweaks for spacing consistency
-      textRef.current.style.letterSpacing = "6px";
-      textRef.current.style.transformOrigin = "center";
-    };
-
-    setupCurve();
+    fetch('https://djsnss-grainathon25.onrender.com/grain-a-thon2025/winning')
+      .then(res => res.json())
+      .then(data => setWinning(data))
+      .catch(error => console.error('Error fetching winning stats:', error));
   }, []);
+
+  useEffect(() => {
+    if (winning && textRef.current) {
+      const setupCurve = async () => {
+        await document.fonts.ready;
+        const circle = new CircleType(textRef.current);
+        circle.radius(800).dir(1);  
+        textRef.current.style.letterSpacing = "6px";
+        textRef.current.style.transformOrigin = "center";
+      };
+      setupCurve();
+    }
+  }, [winning]);
 
   return (
     <div className="relative w-screen h-screen bg-[url('/assets/bg7.png')] bg-cover flex items-center justify-center overflow-hidden">
@@ -32,7 +35,7 @@ const CommitteeWin = () => {
           SCORE :
         </span>
         <span className="text-yellow-400 text-6xl font-bold drop-shadow font-arcade">
-          {winning["comm-quantity"]}
+          {winning ? winning["comm-quantity"] : "--"}
         </span>
       </div>
 
@@ -42,7 +45,7 @@ const CommitteeWin = () => {
         id="curved2"
         className="absolute top-36 w-full text-center font-arcade text-white text-9xl font-bold drop-shadow-lg select-none z-10"
       >
-        {winning.comm.toUpperCase()} WINS
+        {winning ? `${winning.comm.toUpperCase()} WINS` : "Loading..."}
       </h1>
     </div>
   );
