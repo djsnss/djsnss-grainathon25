@@ -8,13 +8,15 @@ import CommitteeWin from "./Pages/CommitteeWin";
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<Leaderboard />} />
-        <Route path="/committee" element={<Committee />} />
-        <Route path="/total" element={<Total />} />
-        <Route path="/dept-win" element={<DeptWin />} />
-        <Route path="/committee-win" element={<CommitteeWin />} />
-      </Routes>
+      <div className="min-h-screen min-w-screen overflow-hidden">
+        <Routes>
+          <Route path="/" element={<Leaderboard />} />
+          <Route path="/committee" element={<Committee />} />
+          <Route path="/total" element={<Total />} />
+          <Route path="/dept-win" element={<DeptWin />} />
+          <Route path="/committee-win" element={<CommitteeWin />} />
+        </Routes>
+      </div>
     </Router>
   );
 }
