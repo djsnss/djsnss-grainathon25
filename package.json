@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "framer-motion": "^12.23.22",
+    "jquery": "^3.7.1",
+    "letteringjs": "^0.7.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
     "react-router-dom": "^7.9.3",
