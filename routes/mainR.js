@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.get("/day", async (req, res) => {
     try {
-        const data = await getDeptDonations(3);
+        const data = await getDeptDonations(1);
         return res.status(200).json(data);
     } catch (err) {
         console.error("Route error /days:", err);
