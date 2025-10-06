@@ -13,7 +13,7 @@ const Header = () => {
 
         
         <div>
-          <span className="text-4xl font-raleway font-bold">Grainathon 3.0</span>
+          <span className="text-4xl font-pixel tracking-wider font-bold">Grainathon 3.0</span>
         </div>
 
       </div>

@@ -55,9 +55,11 @@ const Total = () => {
         style={{ maxWidth: "100%", maxHeight: "100%" }}
       />
 
+      <div className="absolute h-full w-full bg-black opacity-20"></div>
+
       <Header />
 
-      <div className="w-full h-max flex flex-row items-center justify-center gap-10 text-6xl text-white font-arcade font-bold z-10 mt-10 tracking-wider">
+      <div className="w-full h-max flex flex-row items-center justify-center gap-10 text-4xl text-white font-up font-bold z-10 mt-10 tracking-wider">
         <h1>Total</h1>
         <h1>Score</h1>
       </div>
