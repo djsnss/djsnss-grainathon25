@@ -1,7 +1,6 @@
-import React from 'react'
-import Header from "../Components/Header";
 
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+import Header from "../Components/Header";
 
 const Leaderboard = () => {
   const [departmentData, setDepartmentData] = useState([
@@ -39,7 +38,7 @@ const Leaderboard = () => {
     return () => clearInterval(pollInterval);
   }, []);
 
-
+  // Rotate departments every 7s
   useEffect(() => {
     const slideInterval = setInterval(() => {
       setVisibleIndex((prev) => (prev + 1) % departmentData.length);
@@ -49,64 +48,59 @@ const Leaderboard = () => {
 
   const currentDept = departmentData[visibleIndex];
 
-  return (
-    
-    <div className="relative w-screen h-screen overflow-hidden ">
-      {/* Background Image */}
-      <img
-        src="/assets/bg1.png"
-        alt="background"
-        className="absolute inset-0 w-full h-full object-cover z-[1]"
-      />
-      
+return (
+  <div className="relative w-screen h-screen flex items-center justify-center overflow-hidden font-roboto">
+    {/* Background Image */}
+    <img src="/assets/bg1.png"alt="background"
+      className="absolute inset-0 w-full h-full object-cover z-[1]"
+    />
 
-      {/* Center Image */}
-      <img
-        src="/assets/pc.png"
-        alt="pc"
-        className="absolute top-[52%] left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1050px] h-[650px] z-[2]"
-      />
-      <Header />
+    {/* Center PC Image */}
+    <img
+      src="/assets/pc.png"
+      alt="pc"
+      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[650px] z-[2]"
+    />
 
-      {/* Layer */}
-     <div className="relative h-screen flex items-center justify-center z-[3] font-roboto">
- 
-  {/* Center Leaderboard */}
-  <div className="text-center">
-    {/* Title */}
-    <h1 className="font-rasterforge text-5xl text-yellow-400 mb-4 drop-shadow-[0_0_25px_#FFD700]">
-      LEADERBOARD
-    </h1>
+    <Header />
 
-    {/* Header Row */}
-    <div className="grid grid-cols-2 gap-8 mb-2 text-cyan-400 text-lg tracking-widest font-raleway">
-      <span className=" pb-1">DEPARTMENT:</span>
-      <span className="">SCORE:</span>
-    </div>
+    {/* Content Layer */}
+    <div className="relative z-[3] flex flex-col items-center text-center space-y-1">
+      {/* Title */}
+      <h1 className="font-up text-4xl text-yellow-400 tracking-widest drop-shadow-[0_0_15px_gold]">
+        LEADERBOARD
+      </h1>
 
-    {/* Animated Slide Row */}
-    <div className="relative w-[250px] h-[80px] overflow-hidden mx-auto">
-      <div
-        key={currentDept.name}
-        className="absolute inset-0 flex justify-between items-center  px-1"
-      >
-        <span className=" font-silkscreen text-cyan-400 text-2xl border border-cyan-400 px-4 py-2  drop-shadow-[0_0_10px_cyan]">
-          <div className='animate-slideFade'>
-          {currentDept.name}
-          </div>
-        </span>
-        <span className="text-cyan-400  font-silkscreen text-2xl border border-cyan-400 px-6 py-2  drop-shadow-[0_0_10px_cyan]">
-          <div className="animate-slideFade"> {currentDept.score}
-            </div>
-        </span>
-      </div>
-          </div>
+      {/* Table Container */}
+      <div className=" p-6 w-[280px]">
+        {/* Headers */}
+        <div className="grid grid-cols-2 text-white font-raleway text-lg mb-2">
+          <div className="text-left">DEPARTMENT:</div>
+          <div className="text-right">SCORE:</div>
         </div>
 
-    
+        {/* Animated Current Dept */}
+         <div className="absolute w-[250px]  overflow-hidden">
+        <div className="overflow-hidden h-[50px] ">
+          <div
+            key={currentDept.name}
+            className="absolute inset-1  flex justify-between items-center text-cyan-300 font-silkscreen text-3xl "
+          >
+            <span className="border border-cyan-400 h-[50px] w-[130px]  drop-shadow-[0_0_8px_cyan] ">
+              <div className="animate-slideFade">{currentDept.name}</div></span>
+             <span className="border border-cyan-400 h-[50px] w-[80px]  drop-shadow-[0_0_8px_cyan] ">
+              <div className="animate-slideFade">
+              {currentDept.score}
+             </div>
+            </span>
+          </div>
+        </div>
+       </div>
       </div>
     </div>
-  );
+  </div>
+);
+
 };
 
 export default Leaderboard;
