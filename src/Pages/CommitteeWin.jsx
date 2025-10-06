@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import CircleType from "circletype";
 import { winning } from "../data";
+import FireworksBackground from "../Components/FireworksBackground"; // <-- Import here
 
 const CommitteeWin = () => {
   const textRef = useRef(null);
@@ -24,8 +25,9 @@ const CommitteeWin = () => {
 
   return (
     <div className="relative w-screen h-screen bg-[url('/assets/bg7.png')] bg-cover flex items-center justify-center overflow-hidden">
+      <FireworksBackground />
       {/* Score box */}
-      <div className="absolute top-6 right-8 flex flex-col items-center px-4 py-2 rounded text-center">
+      <div className="absolute top-6 right-8 flex flex-col items-center px-4 py-2 rounded text-center z-10">
         <span className="text-white text-4xl font-bold tracking-wide font-up">
           SCORE :
         </span>
@@ -38,7 +40,7 @@ const CommitteeWin = () => {
       <h1
         ref={textRef}
         id="curved2"
-        className="absolute top-36 w-full text-center font-arcade text-white text-9xl font-bold drop-shadow-lg select-none"
+        className="absolute top-36 w-full text-center font-arcade text-white text-9xl font-bold drop-shadow-lg select-none z-10"
       >
         {winning.comm.toUpperCase()} WINS
       </h1>
