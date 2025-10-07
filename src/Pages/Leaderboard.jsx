@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import Header from "../Components/Header";
 
@@ -19,7 +18,7 @@ const Leaderboard = () => {
   // Fetch updated scores every 7s
   useEffect(() => {
     const fetchData = () => {
-      fetch("https://djsnss-bdd25.onrender.com/bdd25/counts")
+      fetch("https://djsnss-grainathon25.onrender.com/grain-a-thon2025/day")
         .then((res) => res.json())
         .then((data) => {
           const updated = departmentData.map((dept) => ({
@@ -48,59 +47,54 @@ const Leaderboard = () => {
 
   const currentDept = departmentData[visibleIndex];
 
-return (
-  <div className="relative w-screen h-screen flex items-center justify-center overflow-hidden font-roboto">
-    {/* Background Image */}
-    <img src="/assets/bg1.png"alt="background"
-      className="absolute inset-0 w-full h-full object-cover z-[1]"
-    />
+  return (
+    <div className="relative w-screen h-screen flex items-center justify-center overflow-hidden font-roboto">
+      <img
+        src="/assets/bg1.png"
+        alt="background"
+        className="absolute inset-0 w-full h-full object-cover"
+      />
 
-    {/* Center PC Image */}
-    <img
-      src="/assets/pc.png"
-      alt="pc"
-      className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[650px] z-[2]"
-    />
+      <div className="absolute h-full w-full bg-black opacity-20 z-[1]"></div>
 
-    <Header />
+      <img
+        src="/assets/pc.png"
+        alt="pc"
+        className="absolute bottom-0 w-[80%] h-[90%] z-[2]"
+      />
 
-    {/* Content Layer */}
-    <div className="relative z-[3] flex flex-col items-center text-center space-y-1">
-      {/* Title */}
-      <h1 className="font-up text-4xl text-yellow-400 tracking-widest drop-shadow-[0_0_15px_gold]">
-        LEADERBOARD
-      </h1>
+      <Header />
 
-      {/* Table Container */}
-      <div className=" p-6 w-[280px]">
-        {/* Headers */}
-        <div className="grid grid-cols-2 text-white font-raleway text-lg mb-2">
-          <div className="text-left">DEPARTMENT:</div>
-          <div className="text-right">SCORE:</div>
-        </div>
+      <div className="relative z-[3] flex flex-col items-center text-center space-y-1">
+        <h1 className="font-up text-4xl text-yellow-400 tracking-wider drop-shadow-[0_0_15px_gold] mt-8">
+          LEADERBOARD
+        </h1>
 
-        {/* Animated Current Dept */}
-         <div className="absolute w-[250px]  overflow-hidden">
-        <div className="overflow-hidden h-[50px] ">
-          <div
-            key={currentDept.name}
-            className="absolute inset-1  flex justify-between items-center text-cyan-300 font-silkscreen text-3xl "
-          >
-            <span className="border border-cyan-400 h-[50px] w-[130px]  drop-shadow-[0_0_8px_cyan] ">
-              <div className="animate-slideFade">{currentDept.name}</div></span>
-             <span className="border border-cyan-400 h-[50px] w-[80px]  drop-shadow-[0_0_8px_cyan] ">
-              <div className="animate-slideFade">
-              {currentDept.score}
-             </div>
+        <div className="mt-4 p-4 flex flex-row items-center justify-center gap-8">
+          <div className="flex flex-col items-center justify-center">
+            <h1 className="text-xl font-silkscreen text-cyan-300 font-semibold mb-1">
+              Department
+            </h1>
+            <span className="border-2 border-cyan-400 rounded-lg h-16 w-40 flex items-center justify-center bg-black bg-opacity-40 shadow-[0_0_8px_cyan] overflow-hidden">
+              <div className="animate-slideFade text-2xl text-white font-bold">
+                {currentDept.name}
+              </div>
+            </span>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <h1 className="text-xl font-silkscreen text-cyan-300 font-semibold mb-1">
+              Score
+            </h1>
+            <span className="border-2 border-cyan-400 rounded-lg h-16 w-40 flex items-center justify-center bg-black bg-opacity-40 shadow-[0_0_8px_cyan] overflow-hidden">
+              <div className="animate-slideFade text-2xl text-white font-bold">
+                {currentDept.score}
+              </div>
             </span>
           </div>
         </div>
-       </div>
       </div>
     </div>
-  </div>
-);
-
+  );
 };
 
 export default Leaderboard;
