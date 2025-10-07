@@ -33,7 +33,7 @@ const Leaderboard = () => {
     };
 
     fetchData();
-    const pollInterval = setInterval(fetchData, 7000);
+    const pollInterval = setInterval(fetchData, 4000);
     return () => clearInterval(pollInterval);
   }, []);
 
@@ -41,7 +41,7 @@ const Leaderboard = () => {
   useEffect(() => {
     const slideInterval = setInterval(() => {
       setVisibleIndex((prev) => (prev + 1) % departmentData.length);
-    }, 7000);
+    }, 4000);
     return () => clearInterval(slideInterval);
   }, [departmentData.length]);
 
@@ -65,8 +65,8 @@ const Leaderboard = () => {
 
       <Header />
 
-      <div className="relative z-[3] flex flex-col items-center text-center space-y-1">
-        <h1 className="font-up text-4xl text-yellow-400 tracking-wider drop-shadow-[0_0_15px_gold] mt-8">
+      <div className="relative z-[3] flex flex-col items-center text-center space-y-3">
+        <h1 className="font-up text-4xl text-yellow-400 tracking-wider drop-shadow-[0_0_15px_gold] mt-12">
           LEADERBOARD
         </h1>
 

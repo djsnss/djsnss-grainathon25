@@ -26,7 +26,7 @@ module.exports = {
         },
       },
       animation: {
-        slideFade: "slideFade 7s ease-in-out infinite",
+        slideFade: "slideFade 4s ease-in-out infinite",
       },
     },
   },
