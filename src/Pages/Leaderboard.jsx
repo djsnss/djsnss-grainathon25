@@ -55,7 +55,7 @@ const Leaderboard = () => {
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      <div className="absolute h-full w-full bg-black opacity-20 z-[1]"></div>
+      <div className="absolute h-full w-full bg-black opacity-30 z-[1]"></div>
 
       <img
         src="/assets/pc.png"
@@ -76,8 +76,27 @@ const Leaderboard = () => {
               Department
             </h1>
             <span className="border-2 border-cyan-400 rounded-lg h-16 w-40 flex items-center justify-center bg-black bg-opacity-40 shadow-[0_0_8px_cyan] overflow-hidden">
-              <div className="animate-slideFade text-2xl text-white font-bold">
-                {currentDept.name}
+              <div className="w-full">
+                <div className="cd-headline slide ag-toggle_title !text-2xl !font-bold !text-white !bg-transparent !shadow-none !m-0 !p-0">
+                  <span className="cd-words-wrapper font-silkscreen">
+                    {departmentData.map((dept, idx) => (
+                      <b
+                        key={dept.name}
+                        className={
+                          visibleIndex === idx
+                            ? "is-visible animate-slideFade"
+                            : "is-hidden"
+                        }
+                        style={{
+                          opacity: visibleIndex === idx ? 1 : 0,
+                          position: visibleIndex === idx ? "static" : "absolute",
+                        }}
+                      >
+                        {dept.name}
+                      </b>
+                    ))}
+                  </span>
+                </div>
               </div>
             </span>
           </div>
@@ -86,8 +105,26 @@ const Leaderboard = () => {
               Score
             </h1>
             <span className="border-2 border-cyan-400 rounded-lg h-16 w-40 flex items-center justify-center bg-black bg-opacity-40 shadow-[0_0_8px_cyan] overflow-hidden">
-              <div className="animate-slideFade text-2xl text-white font-bold">
-                {currentDept.score}
+              <div className="w-full">
+                <div className="cd-headline slide ag-toggle_title !text-2xl !font-bold !text-white !bg-transparent !shadow-none !m-0 !p-0">
+                  <span className="cd-words-wrapper font-silkscreen">
+                    {departmentData.map((dept, idx) => (
+                      <b
+                        key={dept.name}
+                        className={
+                          visibleIndex === idx ? "is-visible animate-slideFade" : "is-hidden"
+                        }
+                        style={{
+                          transition: "opacity 0.5s",
+                          opacity: visibleIndex === idx ? 1 : 0,
+                          position: visibleIndex === idx ? "static" : "absolute",
+                        }}
+                      >
+                        {dept.score}
+                      </b>
+                    ))}
+                  </span>
+                </div>
               </div>
             </span>
           </div>
