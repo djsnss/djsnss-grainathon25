@@ -4,7 +4,7 @@ import { getValues } from "../services/sheetS.js";
 dotenv.config();
 
 const SPREADSHEET_ID = process.env.SPREADSHEET_ID;
-const RANGE = "Day2!F:H";
+const RANGE = "Day1!F:H";
 
 function createEmptyDeptList() {
     return {
