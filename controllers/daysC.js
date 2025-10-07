@@ -15,7 +15,8 @@ function createEmptyDeptList() {
         EXTC: 0,
         ICB: 0,
         IT: 0,
-        MECH: 0
+        MECH: 0,
+        OUTSIDER:0
     };
 }
 

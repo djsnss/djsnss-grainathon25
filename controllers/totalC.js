@@ -11,7 +11,8 @@ export async function getTotalDonations() {
             EXTC: 0,
             ICB: 0,
             IT: 0,
-            MECH: 0
+            MECH: 0,
+            OUTSIDER:0
         }
         const commDonations = await getCommDonations();
         for (const comm of commDonations) {
@@ -20,7 +21,7 @@ export async function getTotalDonations() {
             if (dept in deptDonations) {
                 deptDonations[dept] += quantity;
             } else {
-                deptDonations.Outsider += quantity;
+                deptDonations.OUTSIDER += quantity;
             }
         }
 
