@@ -38,6 +38,11 @@ const CommitteeWin = () => {
         </span>
       </div>
 
+      <img
+        src="/assets/trophy2.png"
+        className="absolute top-64 h-40"
+      />
+
       {/* Curved title */}
       <h1
         ref={textRef}

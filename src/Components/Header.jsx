@@ -8,12 +8,12 @@ const Header = () => {
         
         <div className="flex items-center space-x-3">
           <img src="./assets/DJSNSSLogo.png" alt="Logo" className="w-14 h-14 p-1 bg-white rounded-full object-contain" />
-          <span className="text-4xl font-pixel tracking-widest">DJSNSS</span>
+          <span className="text-5xl font-pixel tracking-widest">DJSNSS</span>
         </div>
 
         
         <div>
-          <span className="text-4xl font-pixel tracking-wider">Grainathon 3.0</span>
+          <span className="text-5xl font-pixel tracking-wider">Grainathon 3.0</span>
         </div>
 
       </div>

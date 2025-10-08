@@ -60,13 +60,13 @@ const Leaderboard = () => {
       <img
         src="/assets/pc.png"
         alt="pc"
-        className="absolute bottom-0 w-[80%] h-[90%] z-[2]"
+        className="absolute bottom-0 w-[90%] h-[90%] z-[2]"
       />
 
       <Header />
 
       <div className="relative z-[3] flex flex-col items-center text-center space-y-3">
-        <h1 className="font-up text-4xl text-yellow-400 tracking-wider drop-shadow-[0_0_15px_gold] mt-12">
+        <h1 className="font-up text-[2.5rem] text-yellow-400 tracking-wider drop-shadow-[0_0_15px_gold] mt-12">
           LEADERBOARD
         </h1>
 
@@ -75,9 +75,9 @@ const Leaderboard = () => {
             <h1 className="text-xl font-silkscreen text-cyan-300 font-semibold mb-1">
               Department
             </h1>
-            <span className="border-2 border-cyan-400 rounded-lg h-16 w-40 flex items-center justify-center bg-black bg-opacity-40 shadow-[0_0_8px_cyan] overflow-hidden">
+            <span className="border-2 border-cyan-400 rounded-lg h-16 w-48 flex items-center justify-center bg-black bg-opacity-40 shadow-[0_0_8px_cyan] overflow-hidden">
               <div className="w-full">
-                <div className="cd-headline slide ag-toggle_title !text-2xl !font-bold !text-white !bg-transparent !shadow-none !m-0 !p-0">
+                <div className="cd-headline slide ag-toggle_title !text-4xl !font-bold !text-white !bg-transparent !shadow-none !m-0 !p-0">
                   <span className="cd-words-wrapper font-silkscreen">
                     {departmentData.map((dept, idx) => (
                       <b
@@ -106,7 +106,7 @@ const Leaderboard = () => {
             </h1>
             <span className="border-2 border-cyan-400 rounded-lg h-16 w-40 flex items-center justify-center bg-black bg-opacity-40 shadow-[0_0_8px_cyan] overflow-hidden">
               <div className="w-full">
-                <div className="cd-headline slide ag-toggle_title !text-2xl !font-bold !text-white !bg-transparent !shadow-none !m-0 !p-0">
+                <div className="cd-headline slide ag-toggle_title !text-4xl !font-bold !text-white !bg-transparent !shadow-none !m-0 !p-0">
                   <span className="cd-words-wrapper font-silkscreen">
                     {departmentData.map((dept, idx) => (
                       <b
