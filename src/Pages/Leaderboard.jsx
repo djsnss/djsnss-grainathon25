@@ -55,7 +55,7 @@ const Leaderboard = () => {
         className="absolute inset-0 w-full h-full object-cover"
       />
 
-      <div className="absolute h-full w-full bg-black opacity-30 z-[1]"></div>
+      <div className="absolute h-full w-full bg-black opacity-50 z-[1]"></div>
 
       <img
         src="/assets/pc.png"
