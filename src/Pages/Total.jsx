@@ -44,7 +44,7 @@ const Total = () => {
     };
 
     fetchData();
-    const pollInterval = setInterval(fetchData, 7000);
+    const pollInterval = setInterval(fetchData, 30000);
     return () => clearInterval(pollInterval);
   }, []);
 
