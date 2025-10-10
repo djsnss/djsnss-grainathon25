@@ -48,7 +48,7 @@ const Total = () => {
     return () => clearInterval(pollInterval);
   }, []);
 
-  const totalScore = teams.reduce((acc, curr) => acc + curr.score, 0);
+  const totalScore = Number(teams.reduce((acc, curr) => acc + Number(curr.score), 0).toFixed(1));
 
   return (
     <div className="flex flex-col justify-center items-center h-screen w-screen relative overflow-hidden">
