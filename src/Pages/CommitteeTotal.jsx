@@ -17,7 +17,9 @@ const colors = [
 function getSortedArr(arr) {
   return [...arr]
     .sort((a, b) =>
-      b.quantity === a.quantity ? a.comm.localeCompare(b.comm) : b.quantity - a.quantity
+      b.quantity === a.quantity
+        ? (a.comm || "").localeCompare(b.comm || "")
+        : b.quantity - a.quantity
     )
     .map((item, idx) => ({ ...item, rank: idx + 1 }));
 }
